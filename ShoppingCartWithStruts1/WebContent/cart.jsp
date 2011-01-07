@@ -25,7 +25,6 @@
 	</nested:iterate>
 </table>
 <html:submit/>
-<html:reset/>
 
 </html:form>
 
