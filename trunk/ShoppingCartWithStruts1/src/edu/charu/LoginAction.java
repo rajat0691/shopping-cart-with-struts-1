@@ -7,8 +7,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-
-
+import edu.charu.model.UserCredentials;
 
 public class LoginAction extends org.apache.struts.action.Action {
 	
@@ -18,13 +17,11 @@ public class LoginAction extends org.apache.struts.action.Action {
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	LoginForm loginForm = (LoginForm) form;
 	
-	if (loginForm.getUserName().equals(loginForm.getPassword())) 
+	UserCredentials uc = new UserCredentials();
+	if(uc.authenticateUser(loginForm.getUserName(), loginForm.getPassword()))
 	{
-		//ManageShoppingItems itemManager = new ManageShoppingItems();
-		//loginForm.setAvailableItems(itemManager.getAvailableItems());
-		//loginForm.setCartItems(null);
 		return mapping.findForward(SUCCESS);
-	} 
+	}
 	else 
 	{
 		return mapping.findForward(FAILURE);
